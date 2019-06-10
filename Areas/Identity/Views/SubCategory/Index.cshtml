@@ -1,0 +1,62 @@
+@model IEnumerable<SubCategory>
+@{
+    ViewData["Title"] = "Index";
+}
+
+     <div class="container">
+       <div class="row">
+         <div class="col-md-12">
+            <a  asp-area="Identity" asp-controller="subcategory" asp-action="Create" class="btn btn-primary" role="button">Create</a>
+
+               <table 
+               class="table-bordered"
+               data-toggle="table"     
+               data-pagination="true"
+               data-search="true"
+               data-sortable="true" 
+               data-sort-class="table-active"
+               data-side-pagination="server"
+              
+              >
+      <thead class="thead-dark">
+        <tr>
+          <th data-sortable="true">ID</th>
+          <th data-sortable="true">Item Name</th>
+          <th data-sortable="true">Item Category Name</th>
+          <th>Status</th>
+          <th>Operations</th>
+
+        </tr>
+      </thead>
+      <tbody id="t-body">
+@foreach (var item in Model)
+{
+              <tr>
+          <td>@item.Id</td>
+          <td>@item.name</td>
+          <td>@item.category.name</td>
+          <td>@item.status</td>
+          <td style="text-align:center; width:110px">
+
+            <form style="display: inline-block;" asp-area="Identity" asp-controller="subcategory" asp-action="update" asp-route-id=@item.Id method="post"> 
+             <button class="btn btn-primary" type="submit"><i class="fas fa-edit"></i></button>
+            </form> 
+
+              <form style="display: inline-block;"asp-area="Identity" asp-controller="subcategory" asp-action="delete" asp-route-id=@item.Id method="post"> 
+             <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button>
+            </form> 
+        
+          </td>
+        </tr>
+}
+
+
+       
+
+        
+
+      </tbody>
+    </table>
+         </div>
+       </div>
+     </div>
