@@ -1,28 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "/home/naib/Projects/skyshopCore/skyshopCore.csproj": {}
+    "C:\\Users\\Naib\\Desktop\\SkyShopeCore\\skyshopCore.csproj": {}
   },
   "projects": {
-    "/home/naib/Projects/skyshopCore/skyshopCore.csproj": {
+    "C:\\Users\\Naib\\Desktop\\SkyShopeCore\\skyshopCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/naib/Projects/skyshopCore/skyshopCore.csproj",
+        "projectUniqueName": "C:\\Users\\Naib\\Desktop\\SkyShopeCore\\skyshopCore.csproj",
         "projectName": "skyshopCore",
-        "projectPath": "/home/naib/Projects/skyshopCore/skyshopCore.csproj",
-        "packagesPath": "/home/naib/.nuget/packages/",
-        "outputPath": "/home/naib/Projects/skyshopCore/obj/",
+        "projectPath": "C:\\Users\\Naib\\Desktop\\SkyShopeCore\\skyshopCore.csproj",
+        "packagesPath": "C:\\Users\\Naib\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Naib\\Desktop\\SkyShopeCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/home/naib/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Naib\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

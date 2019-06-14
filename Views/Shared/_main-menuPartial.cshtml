@@ -1,29 +1,38 @@
+                  @model IEnumerable<mainCategory>
                 <ul class="main-menu menu">
                   <li class="menu-item menu-item-has-children dropdown"><a href="/">Home</a>
                   </li>
                   <li class="menu-item menu-item-has-children has-mega-menu"><a href="#">Category</a>
                     <div class="mega-menu">
                       <div class="mega-wrap">
-                        <div class="mega-column">
+                       
+                          <div class="mega-column">
                           <ul class="mega-item mega-features">
-                            {{#each mainCatList}}
-                              <li><a href="/product-listing">{{this.name}}</a></li>
-                            {{/each}}
-                            
+                             @foreach (var Mcat in Model)
+                        {
+                          <li><a href="/product-listing" class="Main-link" data-id=@Mcat.Id >@Mcat.name</a></li>
+                          
+                        }
                           </ul>
                         </div>
-                        <div class="mega-column">
-                          <h4 class="mega-heading">Shoes</h4>
+                        @foreach (var cat in Model)
+                        {
+                          <div class="row custom-column custom-@cat.Id">
+                          @foreach (var item in cat.categories)
+                          {
+
+                          <div class="mega-column col-3" i=>
+                          <h4 class="mega-heading">@item.name</h4>
                           <ul class="mega-item">
-                            <li><a href="/product-listing">All Shoes</a></li>
-                            <li><a href="/product-listing">Running</a></li>
-                            <li><a href="/product-listing">Training & Gym</a></li>
-                            <li><a href="/product-listing">Basketball</a></li>
-                            <li><a href="/product-listing">Football</a></li>
-                            <li><a href="/product-listing">Soccer</a></li>
-                            <li><a href="/product-listing">Baseball</a></li>
+                            @foreach (var subCat in item.subcategories)
+                            {
+                             <li><a href="/product-listing">@subCat.name</a></li>
+                            }
                           </ul>
                         </div>
+                          }
+                          </div>
+                        }
                         <div class="mega-column">
                           <h4 class="mega-heading">CLOTHING</h4>
                           <ul class="mega-item">
