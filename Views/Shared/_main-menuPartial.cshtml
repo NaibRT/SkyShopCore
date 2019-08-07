@@ -1,23 +1,24 @@
                   @model IEnumerable<mainCategory>
-                <ul class="main-menu menu">
+                  <ul class="main-menu menu">
                   <li class="menu-item menu-item-has-children dropdown"><a href="/">Home</a>
                   </li>
                   <li class="menu-item menu-item-has-children has-mega-menu"><a href="#">Category</a>
                     <div class="mega-menu">
                       <div class="mega-wrap">
-                       
-                          <div class="mega-column">
+                           <div class="col-3">
+                            <div class="mega-column">
                           <ul class="mega-item mega-features">
                              @foreach (var Mcat in Model)
                         {
-                          <li><a href="/product-listing" class="Main-link" data-id=@Mcat.Id >@Mcat.name</a></li>
-                          
+                          <li><a class="Main-link" data-id=@Mcat.Id style="cursor:pointer">@Mcat.name</a></li>
                         }
                           </ul>
                         </div>
+                           </div>
                         @foreach (var cat in Model)
                         {
-                          <div class="row custom-column custom-@cat.Id">
+                          <div class=" col-9 custom-column-block  custom-column-none categoryMenu" data-catId=@cat.Id>
+                          <div class="row">
                           @foreach (var item in cat.categories)
                           {
 
@@ -26,46 +27,14 @@
                           <ul class="mega-item">
                             @foreach (var subCat in item.subcategories)
                             {
-                             <li><a href="/product-listing">@subCat.name</a></li>
+                             <li><a asp-controller="Product" asp-action="Index" asp-route-id=@subCat.name >@subCat.name</a></li>
                             }
                           </ul>
                         </div>
                           }
+                           </div>
                           </div>
                         }
-                        <div class="mega-column">
-                          <h4 class="mega-heading">CLOTHING</h4>
-                          <ul class="mega-item">
-                            <li><a href="/product-listing">Compression & Nike Pro</a></li>
-                            <li><a href="/product-listing">Tops & T-Shirts</a></li>
-                            <li><a href="/product-listing">Polos</a></li>
-                            <li><a href="/product-listing">Hoodies & Sweatshirts</a></li>
-                            <li><a href="/product-listing">Jackets & Vests</a></li>
-                            <li><a href="/product-listing">Pants & Tights</a></li>
-                            <li><a href="/product-listing">Shorts</a></li>
-                          </ul>
-                        </div>
-                        <div class="mega-column">
-                          <h4 class="mega-heading">Accessories</h4>
-                          <ul class="mega-item">
-                            <li><a href="/product-listing">Compression & Nike Pro</a></li>
-                            <li><a href="product-listing.html">Tops & T-Shirts</a></li>
-                            <li><a href="product-listing.html">Polos</a></li>
-                            <li><a href="product-listing.html">Hoodies & Sweatshirts</a></li>
-                            <li><a href="product-listing.html">Jackets & Vests</a></li>
-                            <li><a href="product-listing.html">Pants & Tights</a></li>
-                            <li><a href="product-listing.html">Shorts</a></li>
-                          </ul>
-                        </div>
-                        <div class="mega-column">
-                          <h4 class="mega-heading">BRAND</h4>
-                          <ul class="mega-item">
-                            <li><a href="product-listing.html">NIKE</a></li>
-                            <li><a href="product-listing.html">Adidas</a></li>
-                            <li><a href="product-listing.html">Dior</a></li>
-                            <li><a href="product-listing.html">B&G</a></li>
-                          </ul>
-                        </div> 
                       </div>
                     </div>
                   </li>
@@ -73,4 +42,21 @@
                   </li>
                   <li class="menu-item menu-item-has-children dropdown"><a href="/contact">Contact</a>
                   </li>
-                </ul>
+                  </ul>
+
+
+                  <script>
+                        $(".Main-link").hover((e)=>{
+                        var mId=$(e.target).attr("data-id");      
+                        var child= $(".categoryMenu");
+                        for(var i=0;i<child.length;i++){
+                        var cId=$(child[i]).attr("data-catId");
+                        if(mId==cId){
+                        $(child[i]).css({"display":"block"});
+                         }
+                        else{
+                        $(child[i]).css({"display":"none"});
+                            }
+                         }
+                        });
+                  </script>

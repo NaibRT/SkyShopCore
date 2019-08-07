@@ -1,0 +1,374 @@
+@model VMSupplier
+@{
+    ViewData["Title"] = "Index";
+     Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>User Panel</title>
+  </head>
+  <body>
+<div class="container">
+    <div class="row my-2">
+        <div class="col-lg-8 order-lg-2">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Messages</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#products" data-toggle="tab" class="nav-link">Products</a>
+                </li>
+            </ul>
+            <div class="tab-content py-4">
+                <div class="tab-pane active" id="profile">
+                    <h5 class="mb-3">User Profile</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>About</h6>
+                            <p>
+                                @Model.AppUser.About
+                            </p>
+                            <h6>Hobbies</h6>
+                            <p>
+                                Indie music, skiing and hiking. I love the great outdoors.
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <!-- <h6>Recent badges</h6>
+                            <a href="#" class="badge badge-dark badge-pill">html5</a>
+                            <a href="#" class="badge badge-dark badge-pill">react</a>
+                            <a href="#" class="badge badge-dark badge-pill">codeply</a>
+                            <a href="#" class="badge badge-dark badge-pill">angularjs</a>
+                            <a href="#" class="badge badge-dark badge-pill">css3</a>
+                            <a href="#" class="badge badge-dark badge-pill">jquery</a>
+                            <a href="#" class="badge badge-dark badge-pill">bootstrap</a>
+                            <a href="#" class="badge badge-dark badge-pill">responsive-design</a> -->
+                            <hr>
+                            <span class="badge badge-primary"><i class="fa fa-user"></i> @Model.Orders.Count</span>
+                            <!-- <span class="badge badge-success"><i class="fa fa-cog"></i> 43 Forks</span>
+                            <span class="badge badge-danger"><i class="fa fa-eye"></i> 245 Views</span> -->
+                        </div>
+                        <div class="col-md-12">
+                            <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Activity</h5>
+                            <table class="table table-sm table-hover table-striped">
+                                <!-- <tbody>                                    
+                                    <tr>
+                                        <td>
+                                            <strong>Abby</strong> joined ACME Project Team in <strong>`Collaboration`</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Gary</strong> deleted My Board1 in <strong>`Discussions`</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Kensington</strong> deleted MyBoard3 in <strong>`Discussions`</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>John</strong> deleted My Board1 in <strong>`Discussions`</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Skell</strong> deleted his post Look at Why this is.. in <strong>`Discussions`</strong>
+                                        </td>
+                                    </tr>
+                                </tbody> -->
+                            </table>
+                        </div>
+                    </div>
+                    <!--/row-->
+                </div>
+                <div class="tab-pane" id="messages">
+                    <div class="alert alert-info alert-dismissable">
+                        <a class="panel-close close" data-dismiss="alert">×</a> This is an <strong>.alert</strong>. Use this to show important messages to the user.
+                    </div>
+                    <table class="table table-hover table-striped">
+                        <tbody>                                    
+                            <tr>
+                                <td>
+                                   <span class="float-right font-weight-bold">3 hrs ago</span> Here is your a link to the latest summary report from the..
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                   <span class="float-right font-weight-bold">Yesterday</span> There has been a request on your account since that was..
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                   <span class="float-right font-weight-bold">9/10</span> Porttitor vitae ultrices quis, dapibus id dolor. Morbi venenatis lacinia rhoncus. 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                   <span class="float-right font-weight-bold">9/4</span> Vestibulum tincidunt ullamcorper eros eget luctus. 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                   <span class="float-right font-weight-bold">9/4</span> Maxamillion ais the fix for tibulum tincidunt ullamcorper eros. 
+                                </td>
+                            </tr>
+                        </tbody> 
+                    </table>
+                </div>
+
+                <div class="tab-pane" id="edit">
+                    <form role="form">
+                                     <div class="form-group row">
+                    <label class="col-lg-3 col-form-label form-control-label" asp-for="@Model.AppUser.Name"></label>
+                            <div class="col-lg-9">
+                                <input asp-for="@Model.AppUser.Name" class="form-control" />
+                                <span asp-validation-for="@Model.AppUser.Name" class="text-danger"></span>
+                            </div>
+                   </div>
+                                   <div class="form-group row">
+                    <label class="col-lg-3 col-form-label form-control-label" asp-for="@Model.AppUser.Email"></label>
+                            <div class="col-lg-9">
+                                <input asp-for="@Model.AppUser.Email" class="form-control" />
+                                <span asp-validation-for="@Model.AppUser.Email" class="text-danger"></span>
+                            </div>
+                   </div>
+                                   <div class="form-group row">
+                    <label class="col-lg-3 col-form-label form-control-label" asp-for="@Model.AppUser.Password"></label>
+                            <div class="col-lg-9">
+                                <input asp-for="@Model.AppUser.Password" class="form-control" />
+                                <span asp-validation-for="@Model.AppUser.Password" class="text-danger"></span>
+                            </div>
+                   </div>
+                                   <div class="form-group row">
+                    <label class="col-lg-3 col-form-label form-control-label" asp-for="@Model.AppUser.About"></label>
+                            <div class="col-lg-9">
+                                <input asp-for="@Model.AppUser.About" class="form-control" />
+                                <span asp-validation-for="@Model.AppUser.About" class="text-danger"></span>
+                            </div>
+                   </div>
+                                   <div class="form-group row">
+                    <label class="col-lg-3 col-form-label form-control-label" asp-for="@Model.AppUser.Image"></label>
+                            <div class="col-lg-9">
+                                <input asp-for="@Model.AppUser.Image" class="form-control" />
+                                <span asp-validation-for="@Model.AppUser.Image" class="text-danger"></span>
+                            </div>
+                   </div>
+                    </form>
+                </div>
+                 <div class="tab-pane" id="products">
+                                         <a class="btn btn-primary" id="createProductBtn">Create Product</a>
+                   <table id="selectedColumn" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+
+                         <thead>
+                           <tr>
+                             <th class="th-sm">Name
+                             </th>
+                             <th class="th-sm">Position
+                             </th>
+                              <th class="th-sm">Office
+                               </th>
+                              <th class="th-sm">Age
+                              </th>
+                              <th class="th-sm">Start date
+                              </th>
+                              <th class="th-sm">Salary
+                              </th>
+                             </tr>
+                             </thead>
+                             <tbody>
+                             <tr>
+                              <td>Tiger Nixon</td>
+                              <td>System Architect</td>
+                              <td>Edinburgh</td>
+                              <td>61</td>
+                            <td>2011/04/25</td>
+                            <td>$320,800</td>
+                            </tr>
+                            <tr>
+                            <td>Garrett Winters</td>
+                            <td>Accountant</td>
+                            <td>Tokyo</td>
+                            <td>63</td>
+                            <td>2011/07/25</td>
+                            <td>$170,750</td>
+                            </tr>
+                            <tr>
+                            <td>Ashton Cox</td>
+                            <td>Junior Technical Author</td>
+                            <td>San Francisco</td>
+                            <td>66</td>
+                            <td>2009/01/12</td>
+                            <td>$86,000</td>
+                            </tr>
+                            <tr>
+                            <td>Cedric Kelly</td>
+                            <td>Senior Javascript Developer</td>
+                            <td>Edinburgh</td>
+                            <td>22</td>
+                            <td>2012/03/29</td>
+                            <td>$433,060</td>
+                            </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                <th>Name
+                                </th>
+                                <th>Position
+                                </th>
+                                <th>Office
+                                </th>
+                                <th>Age
+                                </th>
+                                <th>Start date
+                                </th>
+                                <th>Salary
+                                </th>
+                                </tr>
+                            </tfoot>
+                            </table>
+
+                 </div>
+                 <div class="tab-pane" id="createProductForm">
+                     <form>
+                    <div class="form-group">
+                        <label for="exampleInputProductName1">Product Name</label>
+                        <input type="text" class="form-control" id="ProductName" aria-describedby="emailHelp" placeholder="Enter Produc name" Required>
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                                        <div class="form-group">
+                        <label for="exampleInputProductDesc">Product Description</label>
+                        <input type="text" class="form-control" id="ProductDesc" aria-describedby="emailHelp" placeholder="Enter Produc Description" Required>
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPrice">Price</label>
+                        <input type="text" class="form-control" id="productPrice" placeholder="Price" Required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPrice">Discout</label>
+                        <input type="text" class="form-control" id="productDiscount" placeholder="Discount">
+                    </div>
+                     <div class="form-group">
+                        <label for="exampleInputColor">Gender</label>
+                         <select name="gender" id="gender">
+                        <option value="men">Male</option>
+                        <option value="women">Female</option>
+                        </select> 
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" id="submitProduct">Submit</button>
+                    </form>
+                    <form id="AddStockForm">
+                         <div class="form-group">
+                        <label for="exampleInputPrice">Product</label>
+                        <input type="text" class="form-control" id="productId" placeholder="Product">
+                    </div>
+                    </form>
+                        <form id="AddStockForm">
+                         <div class="form-group">
+                        <label for="exampleInputPrice">Choose Color</label>
+                        <select id="pColor" asp-for="Color" asp-items="Html.GetEnumSelectList<Color>()">
+                            <option selected="selected" value="">Please select</option>
+                        </select>
+                    </div>
+                    </form>
+                 </div>
+                
+            </div>
+        </div>
+        <div class="col-lg-4 order-lg-1 text-center">
+            <div class="col-sm-12"><!--left col-->
+              
+
+      <div class="text-center">
+        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+        <h6>Upload a different photo...</h6>
+        <input type="file" class="text-center center-block file-upload">
+      </div><br>
+
+               
+          <div class="panel panel-default">
+            <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
+            <div class="panel-body"><a href="http://bootnipets.com">bootnipets.com</a></div>
+          </div>
+          
+          
+          <ul class="list-group">
+            <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
+            <li class="list-group-item text-right"><span class="pull-center"><strong>Shares</strong></span> 125</li>
+            <li class="list-group-item text-right"><span class="pull-center"><strong>Likes</strong></span> 13</li>
+            <li class="list-group-item text-right"><span class="pull-center"><strong>Posts</strong></span> 37</li>
+            <li class="list-group-item text-right"><span class="pull-center"><strong>Followers</strong></span> 78</li>
+          </ul> 
+               
+          <div class="panel panel-default">
+            <div class="panel-heading">Social Media</div>
+            <div class="panel-body">
+            	<i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
+            </div>
+          </div>
+          
+        </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <partial name="/Views/Shared/_ValidationScriptsPartial.cshtml">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script>
+      $(document).ready(()=>{
+          $("#createProductBtn").click((e)=>{
+              e.PreventDefault;
+              $("#selectedColumn").css({"display":"none"});
+          $("#createProductForm").css({"display":"block"});
+          });
+
+           $("#submitProduct").click((e)=>{
+              e.PreventDefault;
+             var product={
+                    name:$("#ProductName").val(),
+                    gender:$("#gender").val(),
+                    desc:$("#ProductDesc").val(),
+                    discount:$("#productDiscount").val(),
+                    price:$("#productPrice").val(),
+
+             }
+
+             $.ajax(()=>{
+               URL:"Supplier/CreateProduct",
+               type:"Post",
+               data:product,
+               success:(response)=>{
+                 console.log(response);
+               }
+             }).catch(err=>console.log(err))
+
+             console.log(colors);
+           });
+
+      })
+  </script>
+  </body>
+</html>

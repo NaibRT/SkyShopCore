@@ -7,20 +7,27 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using skyshopCore.Models;
 using skyshopCore.Data;
+using skyshopCore.infrastructure;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication;
 
 namespace skyshopCore.Controllers
 {
+ 
+     
     public class HomeController : Controller
     {
+
         private readonly ApplicationDbContext db ;
         public HomeController(ApplicationDbContext _db)
         {
             db=_db;
         }
+       
         public IActionResult Index()
         {
-           var list= db.mainCategories.Include(x=>x.categories).ThenInclude(y=>y.subcategories).ToList();
-            return View(list);
+            
+            return View();
         }
 
         public IActionResult Privacy()

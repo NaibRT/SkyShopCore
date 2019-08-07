@@ -14,8 +14,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.DependencyInjection;
 using skyshopCore.Data;
-
-
+using skyshopCore.infrastructure;
+using skyshopCore.Models;
+using MailKit;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace skyshopCore
 {
@@ -38,18 +40,32 @@ namespace skyshopCore
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddIdentity<AppUser,IdentityRole>(options=>{
+                 options.SignIn.RequireConfirmedEmail = true;
+            })
                 .AddDefaultUI(UIFramework.Bootstrap4)
+                .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
              
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<IEmailSender, EmailSender>();
+             services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
+                 services.AddSession(options => {  
+                     options.IdleTimeout = TimeSpan.FromMinutes(5);
+                     options.Cookie.HttpOnly = true;
+                     options.Cookie.IsEssential = true;
+                 });
+            //  services.AddSingleton<IHostingEnvironment>(new HostingEnvironment());
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDbContext db, 
+                               UserManager<AppUser> usermanager,RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -58,22 +74,33 @@ namespace skyshopCore
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Views/Shared/Error.cshtml");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            db.DataSeed(usermanager,roleManager);
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
             app.UseAuthentication();
+            app.UseSession();  
 
             app.UseMvc(routes =>
             {
                     routes.MapRoute(
                     name: "Identity",
                     template: "{area=exists}/{controller=Dashboard}/{action=Index}/{id?}");
+
+                    routes.MapRoute(
+                    name: "Supplier",
+                    template: "{area=exists}/{controller=Supplier}/{action=Index}/{id?}");
+
+                //    routes.MapRoute(
+                //      name: "UserPanel12",
+                //     template: "panel/{controller}/{action}",
+                //     new { area="userpanel",Controller="panel",action="index"});
 
                 routes.MapRoute(
                     name: "default",

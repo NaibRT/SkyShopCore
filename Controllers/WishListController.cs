@@ -8,7 +8,7 @@ using skyshopCore.Models;
 
 namespace skyshopCore.Controllers
 {
-    public class WisjListController : Controller
+    public class WishListController : Controller
     {
         public IActionResult Index()
         {

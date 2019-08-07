@@ -21,8 +21,8 @@ private ApplicationDbContext db;
         }
         public IActionResult Index()
         {
-            var allCategories=db.mainCategories.ToList();
-            return View(allCategories);
+            
+            return View();
         }
 
     }

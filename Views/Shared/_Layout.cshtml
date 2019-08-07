@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link href="apple-touch-icon.png" rel="apple-touch-icon">
-    <link href="favicon.png" rel="icon">
+    <link href="~/favicon.ico" rel="icon">
     <meta name="author" content="Nghia Minh Luong">
     <meta name="keywords" content="Default Description">
     <meta name="description" content="Default keyword">
@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="~/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/plugins/ps-icon/style.css">
     <!-- CSS Library-->
-    <script rel="stylesheet" href="~/plugins\bootstrap\dist\css\bootstrap.min.css"></script>
+    <script rel="stylesheet" href="~/plugins/bootstrap/dist/css/bootstrap.min.css"></script>
     <link rel="stylesheet" href="~/plugins/owl-carousel/assets/owl.carousel.css">
     <link rel="stylesheet" href="~/plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css">
     <link rel="stylesheet" href="~/plugins/slick/slick/slick.css">
@@ -65,8 +65,14 @@
                   <p>460 West 34th Street, 15th floor, New York  -  Hotline: 804-377-3580 - 804-399-3580</p>
                 </div>
                 <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 ">
-                  <div class="header__actions"><a href="#">Login & Regiser</a>
-                    <div class="btn-group ps-dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">USD<i class="fa fa-angle-down"></i></a>
+                  <div class="header__actions"><a asp-controller="Login" asp-action="index">Login</a>
+                  <div class="btn-group ps-dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Register<i class="fa fa-angle-down"></i></a>
+                      <ul class="dropdown-menu">
+                        <li><a asp-controller="Register" asp-action="User">As User</a></li>
+                        <li><a asp-controller="Register" asp-action="Supplier">As Supplier</a></li>
+                      </ul>
+                    </div>
+                    <!-- <div class="btn-group ps-dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">USD<i class="fa fa-angle-down"></i></a>
                       <ul class="dropdown-menu">
                         <li><a href="#"><img src="images/flag/usa.svg" alt=""> USD</a></li>
                         <li><a href="#"><img src="images/flag/singapore.svg" alt=""> SGD</a></li>
@@ -79,7 +85,7 @@
                         <li><a href="#">Japanese</a></li>
                         <li><a href="#">Chinese</a></li>
                       </ul>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
           </div>
@@ -91,7 +97,7 @@
             <div class="header__logo"><a style="font-weight:bold; font-size:30px" class="ps-logo" href="/"><span style="color: black">SKY</span><span style="color: #2ac37d">SHOPPING</span></a></div>
           </div>
           <div class="navigation__column center">
-          <partial name="_main-menuPartial"/>
+          
           </div>
           <div class="navigation__column right">
             <form class="ps-search--header" action="do_action" method="post">
@@ -132,7 +138,7 @@
         </div>
       </nav>
     </header>
-    <div class="header-services">
+    <div class="header-services" style="display: inline-block;margin-left: 280px;">
       <div class="ps-services owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="7000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="false" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="1000" data-owl-mousedrag="on">
         <p class="ps-service"><i class="ps-icon-delivery"></i><strong>Free delivery</strong>: Get free standard delivery on every order with Sky Store</p>
         <p class="ps-service"><i class="ps-icon-delivery"></i><strong>Free delivery</strong>: Get free standard delivery on every order with Sky Store</p>
@@ -140,6 +146,8 @@
       </div>
     </div>
      <main class="ps-main">
+       <br/>
+
     <div class="container">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
@@ -288,8 +296,8 @@
                 integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
         </script>
     </environment> 
- 
-    <script type="text/javascript"  src="~/plugins\jquery\dist\jquery.min.js"></script>
+
+    <script type="text/javascript"  src="~/plugins/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="~/plugins/jquery-bar-rating/dist/jquery.barrating.min.js"></script>
     <script type="text/javascript" src="~/plugins/owl-carousel/owl.carousel.min.js"></script>
     <script type="text/javascript" src="~/plugins/gmap3.min.js"></script>
@@ -304,7 +312,7 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx39JFH5nhxze1ZydH-Kl8xXM3OK4fvcg&amp;region=GB"></script>
     <script type="text/javascript" src="~/plugins/revolution/js/jquery.themepunch.tools.min.js"></script>
 
-
+<script type="text/javascript" src="~/js/main.js"></script>
 <script type="text/javascript" src="~/plugins/revolution/js/jquery.themepunch.revolution.min.js"></script>
 <script type="text/javascript" src="~/plugins/revolution/js/extensions/revolution.extension.video.min.js"></script>
 <script type="text/javascript" src="~/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
@@ -315,8 +323,8 @@
 <script type="text/javascript" src="~/plugins/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
 <script type="text/javascript" src="~/plugins/revolution/js/extensions/revolution.extension.migration.min.js"></script>
 <script type="text/javascript" src="~/resources/js/custombyme.js"></script>
-<script type="text/javascript" src="~/resources/js/custombyme.js"></script>
-    <!-- Custom scripts-->
+
+ <!-- Custom scripts-->
     @RenderSection("Scripts", required: false)
   </body>
 </html>
