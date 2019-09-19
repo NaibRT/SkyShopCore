@@ -51,10 +51,10 @@ namespace skyshopCore
                 .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
              
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IEmailSender, EmailSender>();
-             services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
-                 services.AddSession(options => {  
+            services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
+            services.AddSession(options => {  
                      options.IdleTimeout = TimeSpan.FromMinutes(5);
                      options.Cookie.HttpOnly = true;
                      options.Cookie.IsEssential = true;

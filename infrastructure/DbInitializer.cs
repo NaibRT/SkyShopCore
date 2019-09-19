@@ -12,7 +12,7 @@ namespace skyshopCore.infrastructure
     {
 
       
-       public static async Task DataSeed( this ApplicationDbContext _db, UserManager<AppUser> usermanager,
+       public static void DataSeed( this ApplicationDbContext _db, UserManager<AppUser> usermanager,
                                                                RoleManager<IdentityRole> roleManager){
            if(_db.Roles.Any()){
              var role1= new IdentityRole(){
@@ -28,9 +28,9 @@ namespace skyshopCore.infrastructure
                 Name="Supplier",
                 NormalizedName="SUPPLIER"
               };
-             await  roleManager.CreateAsync(role1); 
-              await roleManager.CreateAsync(role2);
-             await  roleManager.CreateAsync(role3);
+               roleManager.CreateAsync(role1).GetAwaiter(); 
+               roleManager.CreateAsync(role2).GetAwaiter();
+               roleManager.CreateAsync(role3).GetAwaiter();
 
 
            }
@@ -40,9 +40,9 @@ namespace skyshopCore.infrastructure
                    Email="naibrt@code.edu.az"
                };
 
-              var result=await usermanager.CreateAsync(user1,"1596321Tn");
+              var result= usermanager.CreateAsync(user1,"1596321Tn").GetAwaiter().GetResult();
               if(result.Succeeded)
-                 await  usermanager.AddToRoleAsync(user1,"Admin");
+                   usermanager.AddToRoleAsync(user1,"Admin").GetAwaiter();
 
            }
           

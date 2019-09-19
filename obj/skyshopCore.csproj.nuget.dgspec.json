@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Naib\\Desktop\\SkyShopeCore\\skyshopCore.csproj": {}
+    "c:\\Users\\Naib\\Desktop\\SkyShopeCore\\skyshopCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Naib\\Desktop\\SkyShopeCore\\skyshopCore.csproj": {
+    "c:\\Users\\Naib\\Desktop\\SkyShopeCore\\skyshopCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Naib\\Desktop\\SkyShopeCore\\skyshopCore.csproj",
+        "projectUniqueName": "c:\\Users\\Naib\\Desktop\\SkyShopeCore\\skyshopCore.csproj",
         "projectName": "skyshopCore",
-        "projectPath": "C:\\Users\\Naib\\Desktop\\SkyShopeCore\\skyshopCore.csproj",
+        "projectPath": "c:\\Users\\Naib\\Desktop\\SkyShopeCore\\skyshopCore.csproj",
         "packagesPath": "C:\\Users\\Naib\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Naib\\Desktop\\SkyShopeCore\\obj\\",
+        "outputPath": "c:\\Users\\Naib\\Desktop\\SkyShopeCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
