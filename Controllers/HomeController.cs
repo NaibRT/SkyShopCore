@@ -9,24 +9,33 @@ using skyshopCore.Models;
 using skyshopCore.Data;
 using skyshopCore.infrastructure;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 
 namespace skyshopCore.Controllers
 {
  
-     
+    // [Authorize]
     public class HomeController : Controller
     {
+        private readonly UserManager<AppUser> _userManager;
+         private readonly SignInManager<AppUser> _signinManager;
 
-        private readonly ApplicationDbContext db ;
-        public HomeController(ApplicationDbContext _db)
+        private readonly ApplicationDbContext _db ;
+        public HomeController(ApplicationDbContext db,UserManager<AppUser> userManager,SignInManager<AppUser> signInManager)
         {
-            db=_db;
+            _db=db;
+            _userManager=userManager;
+            _signinManager=signInManager;
         }
        
         public IActionResult Index()
         {
-            
+            var y=HttpContext.User;
+         var id = HttpContext.Session.GetString("UserId");
+         AppUser user=  _userManager.FindByIdAsync(id).GetAwaiter().GetResult();
+         var res=_signinManager.IsSignedIn(y);
             return View();
         }
 

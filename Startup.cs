@@ -40,7 +40,18 @@ namespace skyshopCore
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+            // services.ConfigureApplicationCookie(options =>
+            // {
+            //     // Cookie settings
+            //     options.Cookie.HttpOnly = true;
+            //     options.ExpireTimeSpan = TimeSpan.FromSeconds(50);
+            //     options.LoginPath = "/skyshopCore/Controllers/Account/Login"; // Set here your login path.
+            //     options.AccessDeniedPath = ""; // set here your access denied path.
+            //     options.SlidingExpiration = true;
+            // });
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -55,9 +66,11 @@ namespace skyshopCore
             services.AddSingleton<IEmailSender, EmailSender>();
             services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
             services.AddSession(options => {  
-                     options.IdleTimeout = TimeSpan.FromMinutes(5);
+                     options.IdleTimeout = TimeSpan.FromSeconds(40);
                      options.Cookie.HttpOnly = true;
                      options.Cookie.IsEssential = true;
+                     
+                     
                  });
             //  services.AddSingleton<IHostingEnvironment>(new HostingEnvironment());
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

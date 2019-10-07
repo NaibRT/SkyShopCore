@@ -10,11 +10,13 @@ using skyshopCore.Data;
 using Microsoft.EntityFrameworkCore;
 using skyshopCore.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using skyshopCore.infrastructure;
 
 namespace skyshopCore.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin")]
-    [Area("Identity")]
+   // [Authorize(Roles = "Admin")]
+   [Authorization("Admin")]
+    [Area("Admin")]
     public class CategoryController : Controller
     {
        private ApplicationDbContext db;
@@ -24,6 +26,7 @@ namespace skyshopCore.Areas.Admin.Controllers
        }
         public  IActionResult Index()
         {
+          
           var categories=db.Categories.Include(x=>x.MainCategory).ToList();
            return View(categories);
         }

@@ -14,7 +14,7 @@ namespace skyshopCore.infrastructure
       
        public static void DataSeed( this ApplicationDbContext _db, UserManager<AppUser> usermanager,
                                                                RoleManager<IdentityRole> roleManager){
-           if(_db.Roles.Any()){
+           if(!_db.Roles.Any()){
              var role1= new IdentityRole(){
                 Name="Admin",
                 NormalizedName="ADMIN"
@@ -34,13 +34,14 @@ namespace skyshopCore.infrastructure
 
 
            }
-           if(_db.Users.Any()){
+
+           if(!_db.Users.Any()){
                var user1=new AppUser(){
                    UserName="NaibTahmazli",
                    Email="naibrt@code.edu.az"
                };
 
-              var result= usermanager.CreateAsync(user1,"1596321Tn").GetAwaiter().GetResult();
+              var result= usermanager.CreateAsync(user1,"1596321@TNaib").GetAwaiter().GetResult();
               if(result.Succeeded)
                    usermanager.AddToRoleAsync(user1,"Admin").GetAwaiter();
 

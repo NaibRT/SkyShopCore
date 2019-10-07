@@ -5,12 +5,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using skyshopCore.infrastructure;
 using skyshopCore.Models;
 
 namespace skyshopCore.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin")]
-    [Area("Identity")]
+    [Authorization("Admin")]
+    [Area("Admin")]
     public class DashboardController : Controller
     {
         public IActionResult Index()
